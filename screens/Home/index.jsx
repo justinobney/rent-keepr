@@ -5,28 +5,21 @@ import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import './index.scss';
 
+import ContentPage from 'components/ContentPage';
+
 let mapStateToProps = state => ({});
 let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Home extends Component {
-  componentWillMount() {
-    // const { dispatch, pushState } = this.props;
-    // setTimeout(() => dispatch(pushState(null, '/about')), 2000);
-  }
   render() {
     return (
-      <section className="home-wrapper">
-        <nav className="home-sub-navigation">
-          <Link to="/about" className="home-sub-navigation-link">about</Link>
-          <Link to="/about" className="home-sub-navigation-link">about</Link>
-          <Link to="/about" className="home-sub-navigation-link">about</Link>
-          <Link to="/about" className="home-sub-navigation-link">about</Link>
-        </nav>
+      <ContentPage className="home-wrapper">
         <main>
           <h1>Home Page</h1>
+          {[1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,].map(() => <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>)}
         </main>
-      </section>
+      </ContentPage>
     );
   }
 };

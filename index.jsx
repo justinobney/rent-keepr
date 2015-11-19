@@ -19,7 +19,7 @@ try {
         <ReduxRouter>
           {routes}
         </ReduxRouter>
-        <DevTools />
+        {__DEVTOOLS__ && <DevTools />}
       </div>
     </Provider>,
     root);

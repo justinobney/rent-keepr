@@ -1,29 +1,55 @@
 @import "variables";
 
 .app-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  flex: 1;
 }
 
-.app-header {
-  flex: 0 0 60px;
-  background: $app-header-bg-color;
-  border-bottom: solid 1px darken($app-header-bg-color, 20%);
-  box-shadow: lighten($app-header-bg-color, 50%) 0 0 1px;
+.app-top-bar {
+  background: $app-primary-color;
+  height: 40px;
+  padding: 5px;
+  color: $white;
+  box-shadow: rgba(0,0,0,0.5) 0 2px 1px 0px;
+  z-index: 1;
 }
 
-.app-header-brand {
-  margin: 10px 50px;
-  color: $app-header-brand-color;
-  text-shadow: #333 1px 1px 1px;
+.app-side-bar {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  background: $sidebar-bg-color;
+  border-right: solid 1px #6F77A7;
+  z-index: 1;
+}
+
+.app-logo {
+  color: $white;
+  text-align: center;
+  display: block;
+  text-decoration: none;
 }
 
 .app-main {
+  position: absolute;
+  top: 40px;
+  left: 250px;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   flex: 1;
-  background: $app-main-bg-color;
+  padding: 25px;
+  background: $content-bg-color;
+  overflow-y: auto;
+  box-shadow: inset rgba(0,0,0,0.7) 1px 0px 1px 0px;
 }

@@ -1,16 +1,19 @@
 $body-color: #204669;
 $white: #FFFFFF;
+$green: #93BD4D;
+$blue: #20D4E2;
+$purple: #6B75B3;
 
-$body-margin-lr: 50px;
-$body-margin-top: 15px;
+$app-primary-color: $purple;
 
-$app-header-bg-color: #377b9d;
-$app-header-brand-color: #FFF;
-$app-main-bg-color: #FFF;
+$sidebar-bg-color: #424F57;
 
 $content-padding: 10px;
+$content-bg-color: #E4E9EF;
+$content-page-bg-color: #FFF;
+
 
 @mixin default-page-padding {
   width: 100%;
-  padding: $body-margin-top $body-margin-lr;
+  padding: 50px 10px;
 }

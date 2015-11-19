@@ -57,6 +57,12 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({//"compiler flags"
+      __CLIENT__: true,
+      __SERVER__: false,
+      __DEVELOPMENT__: true,
+      __DEVTOOLS__: false
+    })
   ]
 };

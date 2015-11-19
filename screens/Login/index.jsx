@@ -5,6 +5,8 @@ import { pushState } from 'redux-router';
 import { onLoginUserSuccess } from '@redux/modules/auth';
 import './index.scss';
 
+import ContentPage from 'components/ContentPage';
+
 let mapStateToProps = state => ({
   location: state.router.location,
   auth: state.auth
@@ -23,15 +25,15 @@ export default class Login extends Component {
   }
   render() {
     return (
-      <section className="login-wrapper">
-        <header className="login-wrapper-header-header">
+      <ContentPage className="login-wrapper">
+        <header className="">
           <h1>Login</h1>
         </header>
-        <main className="login-wrapper-header-content">
+        <main className="">
           <p>(just click the button)</p>
           <button onClick={::this._handleLogin}>Login</button>
         </main>
-      </section>
+      </ContentPage>
     );
   }
 };

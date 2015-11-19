@@ -1,28 +1,10 @@
 @import "variables", "neutron/neutron";
 
 .home-wrapper {
-  @include breakpoint(mobile) {
-	  @include columns(1, $margin:10px, $container-width:100%);
-	}
-  @include breakpoint(from-tablet) {
-	  @include columns((1,2), $margin:10px, $container-width:100%);
-	}
-
-  @include default-page-padding;
-}
-
-.home-sub-navigation {
-  background: rgba(0, 0, 0, 0.18);
-}
-
-.home-sub-navigation-link {
-  display: block;
-  padding: 5px;
-  color: $white;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.18);
-    text-decoration: none;
-    color: $white;
-  }
+  // @include breakpoint(mobile) {
+	//   @include columns(1, $margin:10px, $container-width:100%);
+	// }
+  // @include breakpoint(from-tablet) {
+	//   @include columns((1,2), $margin:10px, $container-width:100%);
+	// }
 }

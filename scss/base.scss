@@ -1,7 +1,8 @@
-@import "variables", "neutron/neutron";
+@import "variables", "normalize/import-now", "neutron/neutron";
 
 body {
   color: $body-color;
+  font-family: arial, sans-serif;
 }
 
 .u-relative {

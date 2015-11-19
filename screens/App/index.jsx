@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import { Link } from 'react-router'
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
+import Wrapper from 'components/util/Wrapper';
+
 import './index.scss';
 
 let mapStateToProps = state => ({ location: state.router.location });
@@ -13,14 +15,16 @@ export default class App extends Component {
   render() {
     return (
       <div className="app-wrapper">
-        <header className="app-header">
-          <Link to="/">
-            <h1 className="app-header-brand">
-              rent keepr
-            </h1>
-          </Link>
+        <header className="app-top-bar">
         </header>
-        <main  className="app-main">
+        <section className="app-side-bar">
+          <h1>
+            <Link to="/" className="app-logo">
+              Rent-Keepr
+            </Link>
+          </h1>
+        </section>
+        <main className="app-main">
           {this.props.children}
         </main>
       </div>
