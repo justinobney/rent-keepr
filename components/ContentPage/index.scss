@@ -5,7 +5,11 @@
   padding: 15px;
   box-shadow: rgba(0,0,0,0.85) 0 0 3px;
   border-radius: 2px;
+}
 
+.content-page-header {
+  margin-bottom: 10px;
+  
   h1 {
     color: $app-primary-color;
     margin: 0;

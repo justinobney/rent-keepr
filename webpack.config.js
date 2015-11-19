@@ -43,6 +43,7 @@ module.exports = {
       },
       { test: /\.json$/, loader: "json" },
       { test: /\.css$/, loader: 'style!css' },
+      { test: /\.less$/, loader: 'style!css!less' },
       { test: /\.scss$/, loader: 'style!css?sourceMap!sass?sourceMap' }
     ]
   },

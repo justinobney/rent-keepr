@@ -4,6 +4,13 @@ import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import { onLoginUserSuccess } from '@redux/modules/auth';
 import './index.scss';
+import {
+	Button,
+	Form,
+	FormField,
+	FormInput,
+	FormRow
+} from'elemental';
 
 import ContentPage from 'components/ContentPage';
 
@@ -26,12 +33,19 @@ export default class Login extends Component {
   render() {
     return (
       <ContentPage className="login-wrapper">
-        <header className="">
+        <header className="content-page-header">
           <h1>Login</h1>
         </header>
-        <main className="">
-          <p>(just click the button)</p>
-          <button onClick={::this._handleLogin}>Login</button>
+        <main>
+          <Form className="login-form">
+							<FormField label="Email address" htmlFor="basic-form-input-email">
+								<FormInput autofocus type="email" placeholder="Enter email" name="basic-form-input-email" />
+							</FormField>
+							<FormField label="Password" htmlFor="basic-form-input-password">
+								<FormInput type="password" placeholder="Password" name="basic-form-input-password" />
+							</FormField>
+							<Button type="default" onClick={::this._handleLogin}>Submit</Button>
+						</Form>
         </main>
       </ContentPage>
     );
