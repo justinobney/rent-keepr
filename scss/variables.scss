@@ -1,0 +1,16 @@
+$body-color: #204669;
+$white: #FFFFFF;
+
+$body-margin-lr: 50px;
+$body-margin-top: 15px;
+
+$app-header-bg-color: #377b9d;
+$app-header-brand-color: #FFF;
+$app-main-bg-color: #FFF;
+
+$content-padding: 10px;
+
+@mixin default-page-padding {
+  width: 100%;
+  padding: $body-margin-top $body-margin-lr;
+}

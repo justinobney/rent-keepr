@@ -1,0 +1,29 @@
+@import "variables";
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: 1;
+}
+
+.app-header {
+  flex: 0 0 60px;
+  background: $app-header-bg-color;
+  border-bottom: solid 1px darken($app-header-bg-color, 20%);
+  box-shadow: lighten($app-header-bg-color, 50%) 0 0 1px;
+}
+
+.app-header-brand {
+  margin: 10px 50px;
+  color: $app-header-brand-color;
+  text-shadow: #333 1px 1px 1px;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: 1;
+  background: $app-main-bg-color;
+}

@@ -1,0 +1,5 @@
+@import "variables";
+
+.about-page-wrapper {
+  @include default-page-padding;
+}
