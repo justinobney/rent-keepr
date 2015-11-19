@@ -9,7 +9,8 @@ import {
 	Form,
 	FormField,
 	FormInput,
-	FormRow
+	FormRow,
+	Spinner
 } from'elemental';
 
 import ContentPage from 'components/ContentPage';
@@ -32,7 +33,7 @@ export default class Login extends Component {
   }
   render() {
     return (
-      <ContentPage className="login-wrapper">
+			<ContentPage className="login-wrapper">
         <header className="content-page-header">
           <h1>Login</h1>
         </header>
@@ -44,7 +45,9 @@ export default class Login extends Component {
 							<FormField label="Password" htmlFor="basic-form-input-password">
 								<FormInput type="password" placeholder="Password" name="basic-form-input-password" />
 							</FormField>
-							<Button type="default" onClick={::this._handleLogin}>Submit</Button>
+							<Button type="default" onClick={::this._handleLogin}>
+								Submit
+							</Button>
 						</Form>
         </main>
       </ContentPage>

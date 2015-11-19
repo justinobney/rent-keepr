@@ -23,6 +23,20 @@ export default class App extends Component {
               Rent-Keepr
             </Link>
           </h1>
+          <nav className="app-side-bar-nav">
+            <Link to="/" className="app-side-bar-nav-link is-active">
+              Dashboard
+            </Link>
+            <Link to="/" className="app-side-bar-nav-link">
+              Properties
+            </Link>
+            <Link to="/" className="app-side-bar-nav-link">
+              Tenants
+            </Link>
+            <Link to="/" className="app-side-bar-nav-link">
+              Reports
+            </Link>
+          </nav>
         </section>
         <main className="app-main">
           {this.props.children}
