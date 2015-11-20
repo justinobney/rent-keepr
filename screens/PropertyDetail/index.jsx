@@ -1,6 +1,5 @@
-// Home Screen
+// Property Detail Screen
 import React, {Component} from 'react';
-import { Link } from 'react-router'
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import './index.scss';
@@ -11,15 +10,15 @@ let mapStateToProps = state => ({});
 let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class Home extends Component {
+export default class PropertyDetail extends Component {
   render() {
     return (
-      <ContentPage className="home-wrapper">
+      <ContentPage className="property-detail-wrapper">
         <header className="content-page-header">
-          <h1>Dashboard</h1>
+          <h1>Properties</h1>
         </header>
         <main>
-          <p>Dashboardy things and such</p>
+          Property detail here...
         </main>
       </ContentPage>
     );

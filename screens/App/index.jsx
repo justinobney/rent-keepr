@@ -1,6 +1,6 @@
 // App Component
 import React, {Component} from 'react';
-import { Link } from 'react-router'
+import { IndexLink, Link } from 'react-router'
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
 import Wrapper from 'components/util/Wrapper';
@@ -19,21 +19,21 @@ export default class App extends Component {
         </header>
         <section className="app-side-bar">
           <h1>
-            <Link to="/" className="app-logo">
+            <IndexLink to="/" className="app-logo">
               Rent-Keepr
-            </Link>
+            </IndexLink>
           </h1>
           <nav className="app-side-bar-nav">
-            <Link to="/" className="app-side-bar-nav-link is-active">
+            <IndexLink to="/" className="app-side-bar-nav-link" activeClassName="is-active">
               Dashboard
-            </Link>
-            <Link to="/" className="app-side-bar-nav-link">
+            </IndexLink>
+            <Link to="/properties" className="app-side-bar-nav-link" activeClassName="is-active">
               Properties
             </Link>
-            <Link to="/" className="app-side-bar-nav-link">
+            <Link to="/tenants" className="app-side-bar-nav-link" activeClassName="is-active">
               Tenants
             </Link>
-            <Link to="/" className="app-side-bar-nav-link">
+            <Link to="/reports" className="app-side-bar-nav-link" activeClassName="is-active">
               Reports
             </Link>
           </nav>
