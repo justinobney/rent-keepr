@@ -4,7 +4,7 @@ import RedBox from 'redbox-react';
 import { ReduxRouter } from 'redux-router';
 import { Provider } from 'react-redux'
 
-import './node_modules/elemental/less/elemental.less';
+import 'scss/elemental.less';
 import 'scss/base.scss';
 
 import store from '@redux/create.js'
