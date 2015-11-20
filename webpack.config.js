@@ -12,15 +12,31 @@ function inProject () {
 }
 
 module.exports = {
-  entry: [
-    'webpack-dev-server/client?http://0.0.0.0:9000', // WebpackDevServer host and port
-    'webpack/hot/only-dev-server',
-    './index.jsx' // Your appʼs entry point
-  ],
+  entry: {
+    app: [
+      'webpack-dev-server/client?http://0.0.0.0:9000', // WebpackDevServer host and port
+      'webpack/hot/only-dev-server',
+      path.resolve(__dirname, './index.jsx')
+    ],
+    vendor: [
+      'elemental',
+      'history',
+      'lodash',
+      'moment',
+      'react',
+      'react-addons-css-transition-group',
+      'react-dom',
+      'react-redux',
+      'react-router',
+      'redbox-react',
+      'redux',
+      'redux-router'
+    ]
+  },
   devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
   output: {
     path: path.join(__dirname, 'public'),
-    filename: 'bundle.js'
+    filename: 'app.js'
   },
   resolve: {
     modulesDirectories: ['node_modules', './components'],
@@ -57,6 +73,7 @@ module.exports = {
       inline: true
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({//"compiler flags"
