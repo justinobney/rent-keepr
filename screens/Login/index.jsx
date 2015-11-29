@@ -23,7 +23,8 @@ let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class Login extends Component {
-  _handleLogin(){
+  _handleLogin(e){
+		e.preventDefault();
     this.props.dispatch(onLoginUserSuccess());
   }
   componentWillReceiveProps(nextProps) {
@@ -38,14 +39,14 @@ export default class Login extends Component {
           <h1>Login</h1>
         </header>
         <main>
-          <Form className="login-form">
+          <Form className="login-form" onSubmit={::this._handleLogin}>
 							<FormField label="Email address" htmlFor="basic-form-input-email">
 								<FormInput autofocus type="email" placeholder="Enter email" name="basic-form-input-email" />
 							</FormField>
 							<FormField label="Password" htmlFor="basic-form-input-password">
 								<FormInput type="password" placeholder="Password" name="basic-form-input-password" />
 							</FormField>
-							<Button type="primary" onClick={::this._handleLogin}>
+							<Button type="primary" submit={true}>
 								Log In <Glyph icon="lock" />
 							</Button>
 						</Form>
