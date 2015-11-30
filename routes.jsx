@@ -8,14 +8,16 @@ import App from './screens/App/';
 import About from './screens/About/';
 import Home from './screens/Home/';
 import Login from './screens/Login/';
-import PropertyDetail from './screens/PropertyDetail/';
+import PropertyList from './screens/Properties/';
+import NewProperty from './screens/Properties/new-property.jsx';
 
 let routes = (
   <Route path="/" component={App}>
     <Route component={requireAuthentication(Wrapper)}>
       <IndexRoute component={Home}/>
-      <Route path="/properties">
-        <IndexRoute component={PropertyDetail}/>
+      <Route path="properties">
+        <IndexRoute component={PropertyList}/>
+        <Route path="new" component={NewProperty} />
       </Route>
     </Route>
     <Route path="login" component={Login} />

@@ -1,8 +1,8 @@
-// Property Detail Screen
+// Property List Screen
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
-import { Table } from 'elemental';
+import { Button, Table } from 'elemental';
 
 import './index.scss';
 
@@ -12,12 +12,16 @@ let mapStateToProps = state => ({});
 let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class PropertyDetail extends Component {
+export default class PropertyList extends Component {
   render() {
     return (
-      <ContentPage className="property-detail-wrapper">
+      <ContentPage className="property-list-wrapper">
         <header className="content-page-header">
           <h1>Properties</h1>
+          <Button type="hollow-primary" className="content-page-header-cta"
+            href="#/properties/new">
+            New Property
+          </Button>
         </header>
         <main>
           <Table>
