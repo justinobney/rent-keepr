@@ -34,24 +34,26 @@ export default class Login extends Component {
   }
   render() {
     return (
-			<ContentPage className="login-wrapper">
-        <header className="content-page-header">
-          <h1>Login</h1>
-        </header>
-        <main>
-          <Form className="login-form" onSubmit={::this._handleLogin}>
-							<FormField label="Email address" htmlFor="basic-form-input-email">
-								<FormInput autofocus type="email" placeholder="Enter email" name="basic-form-input-email" />
-							</FormField>
-							<FormField label="Password" htmlFor="basic-form-input-password">
-								<FormInput type="password" placeholder="Password" name="basic-form-input-password" />
-							</FormField>
-							<Button type="primary" submit={true}>
-								Log In <Glyph icon="lock" />
-							</Button>
-						</Form>
-        </main>
-      </ContentPage>
+			<div className="login-wrapper">
+				<ContentPage className="m-single">
+	        <header className="content-page-header">
+	          <h1>Login</h1>
+	        </header>
+	        <main>
+	          <Form className="login-form" onSubmit={::this._handleLogin}>
+								<FormField label="Email address" htmlFor="basic-form-input-email">
+									<FormInput autofocus type="email" placeholder="Enter email" name="basic-form-input-email" />
+								</FormField>
+								<FormField label="Password" htmlFor="basic-form-input-password">
+									<FormInput type="password" placeholder="Password" name="basic-form-input-password" />
+								</FormField>
+								<Button type="primary" submit={true}>
+									Log In <Glyph icon="lock" />
+								</Button>
+							</Form>
+	        </main>
+	      </ContentPage>
+			</div>
     );
   }
 };

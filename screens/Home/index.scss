@@ -1,10 +1,6 @@
 @import "variables", "neutron/neutron";
 
 .home-wrapper {
-  // @include breakpoint(mobile) {
-	//   @include columns(1, $margin:10px, $container-width:100%);
-	// }
-  // @include breakpoint(from-tablet) {
-	//   @include columns((1,2), $margin:10px, $container-width:100%);
-	// }
+  width: 100%;
+  @include columns(1, $margin:10px, $container-width:100%);
 }

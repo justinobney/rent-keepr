@@ -14,14 +14,16 @@ let mapDispatchToProps = dispatch => ({dispatch, pushState})
 export default class Home extends Component {
   render() {
     return (
-      <ContentPage className="home-wrapper">
-        <header className="content-page-header">
-          <h1>Dashboard</h1>
-        </header>
-        <main>
-          <p>Dashboardy things and such</p>
-        </main>
-      </ContentPage>
+      <div className="home-wrapper">
+        <ContentPage>
+          <header className="content-page-header">
+            <h1>Dashboard</h1>
+          </header>
+          <main>
+            <p>Dashboardy things and such</p>
+          </main>
+        </ContentPage>
+      </div>
     );
   }
 };

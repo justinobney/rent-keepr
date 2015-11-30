@@ -15,75 +15,77 @@ let mapDispatchToProps = dispatch => ({dispatch, pushState})
 export default class PropertyList extends Component {
   render() {
     return (
-      <ContentPage className="property-list-wrapper">
-        <header className="content-page-header">
-          <h1>Properties</h1>
-          <Button type="hollow-primary" className="content-page-header-cta"
-            href="#/properties/new">
-            New Property
-          </Button>
-        </header>
-        <main>
-          <Table>
-          	<colgroup>
-              <col width="" />
-              <col width="" />
-              <col width="100" />
-          		<col width="100" />
-          	</colgroup>
-          	<thead>
-          		<tr>
-                <th>Address</th>
-          			<th>Tenany</th>
-          			<th>Rent</th>
-          			<th>Current</th>
-          		</tr>
-          	</thead>
-          	<tbody>
-          		<tr>
-          			<td>
-          				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
-          			</td>
-          			<td>John Smith</td>
-                <td>$700</td>
-          			<td>Yes</td>
-          		</tr>
-              <tr>
-          			<td>
-          				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
-          			</td>
-          			<td>John Smith</td>
-                <td>$700</td>
-          			<td>Yes</td>
-          		</tr>
-              <tr>
-          			<td>
-          				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
-          			</td>
-          			<td>John Smith</td>
-                <td>$700</td>
-          			<td>No</td>
-          		</tr>
-              <tr>
-          			<td>
-          				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
-          			</td>
-          			<td>John Smith</td>
-                <td>$700</td>
-          			<td>Yes</td>
-          		</tr>
-              <tr>
-          			<td>
-          				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
-          			</td>
-          			<td>John Smith</td>
-                <td>$700</td>
-          			<td>Yes</td>
-          		</tr>
-          	</tbody>
-          </Table>
-        </main>
-      </ContentPage>
+      <div className="property-list-wrapper">
+        <ContentPage>
+          <header className="content-page-header">
+            <h1>Properties</h1>
+            <Button type="hollow-primary" className="content-page-header-cta"
+              href="#/properties/new">
+              New Property
+            </Button>
+          </header>
+          <main>
+            <Table>
+            	<colgroup>
+                <col width="" />
+                <col width="" />
+                <col width="100" />
+            		<col width="100" />
+            	</colgroup>
+            	<thead>
+            		<tr>
+                  <th>Address</th>
+            			<th>Tenany</th>
+            			<th>Rent</th>
+            			<th>Current</th>
+            		</tr>
+            	</thead>
+            	<tbody>
+            		<tr>
+            			<td>
+            				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
+            			</td>
+            			<td>John Smith</td>
+                  <td>$700</td>
+            			<td>Yes</td>
+            		</tr>
+                <tr>
+            			<td>
+            				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
+            			</td>
+            			<td>John Smith</td>
+                  <td>$700</td>
+            			<td>Yes</td>
+            		</tr>
+                <tr>
+            			<td>
+            				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
+            			</td>
+            			<td>John Smith</td>
+                  <td>$700</td>
+            			<td>No</td>
+            		</tr>
+                <tr>
+            			<td>
+            				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
+            			</td>
+            			<td>John Smith</td>
+                  <td>$700</td>
+            			<td>Yes</td>
+            		</tr>
+                <tr>
+            			<td>
+            				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
+            			</td>
+            			<td>John Smith</td>
+                  <td>$700</td>
+            			<td>Yes</td>
+            		</tr>
+            	</tbody>
+            </Table>
+          </main>
+        </ContentPage>
+      </div>
     );
   }
 };

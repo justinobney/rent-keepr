@@ -1,5 +1,11 @@
-@import "variables";
+@import "variables", "neutron/neutron";
 
 .property-list-wrapper {
+  width: 100%;
+  @include columns(1, $margin:10px, $container-width:100%);
+}
 
+.new-property-wrapper {
+  width: 100%;
+  @include columns(1, $margin:10px, $container-width:100%);
 }

@@ -1,9 +1,6 @@
 @import "variables", "neutron/neutron";
 
 .login-wrapper {
-  width: 50%;
-}
-
-.login-form {
-  max-width: 400px;
+  width: 100%;
+  @include columns(1, $margin:10px, $container-width:100%);
 }

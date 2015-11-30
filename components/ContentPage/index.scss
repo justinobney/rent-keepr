@@ -6,6 +6,10 @@
   box-shadow: rgba(0,0,0,0.85) 0 0 3px;
   border-radius: 2px;
   margin-bottom: 20px;
+
+  &.m-single {
+    max-width: 600px;
+  }
 }
 
 .content-page-header {
