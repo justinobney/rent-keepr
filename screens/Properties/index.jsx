@@ -7,13 +7,30 @@ import { Button, Table } from 'elemental';
 import './index.scss';
 
 import ContentPage from 'components/ContentPage';
+import {getProperties} from '@redux/modules/properties'
 
-let mapStateToProps = state => ({});
+let mapStateToProps = state => ({properties: state.properties});
 let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class PropertyList extends Component {
+  componentWillMount() {
+    this.props.dispatch(getProperties())
+  }
+  _renderRow(item){
+    return (
+      <tr key={item.id}>
+  			<td>
+  				<a href="javascript:;">{`${item.address1}, ${item.city}, ${item.state} ${item.zipcode}`}</a>
+  			</td>
+  			<td>{item.tenant}</td>
+        <td>{item.rent}</td>
+      <td>{item.current}</td>
+  		</tr>
+    );
+  }
   render() {
+    let properties = this.props.properties;
     return (
       <div className="property-list-wrapper">
         <ContentPage>
@@ -41,46 +58,7 @@ export default class PropertyList extends Component {
             		</tr>
             	</thead>
             	<tbody>
-            		<tr>
-            			<td>
-            				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
-            			</td>
-            			<td>John Smith</td>
-                  <td>$700</td>
-            			<td>Yes</td>
-            		</tr>
-                <tr>
-            			<td>
-            				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
-            			</td>
-            			<td>John Smith</td>
-                  <td>$700</td>
-            			<td>Yes</td>
-            		</tr>
-                <tr>
-            			<td>
-            				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
-            			</td>
-            			<td>John Smith</td>
-                  <td>$700</td>
-            			<td>No</td>
-            		</tr>
-                <tr>
-            			<td>
-            				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
-            			</td>
-            			<td>John Smith</td>
-                  <td>$700</td>
-            			<td>Yes</td>
-            		</tr>
-                <tr>
-            			<td>
-            				<a href="javascript:;">123 Foo Ave, Denham Springs, LA 70817</a>
-            			</td>
-            			<td>John Smith</td>
-                  <td>$700</td>
-            			<td>Yes</td>
-            		</tr>
+                {properties.items.map(::this._renderRow)}
             	</tbody>
             </Table>
           </main>

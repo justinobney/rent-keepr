@@ -2,7 +2,6 @@ var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-
 const resolve = require('path').resolve;
 const _slice  = [].slice;
 PROJECT_PATH = resolve(__dirname, './');
@@ -16,6 +15,7 @@ module.exports = {
     app: [
       'webpack-dev-server/client?http://0.0.0.0:9000', // WebpackDevServer host and port
       'webpack/hot/only-dev-server',
+      'babel-polyfill',
       path.resolve(__dirname, './index.jsx')
     ],
     vendor: [
@@ -30,7 +30,9 @@ module.exports = {
       'react-router',
       'redbox-react',
       'redux',
-      'redux-router'
+      'redux-router',
+      'redux-async',
+      'redux-create-reducer'
     ]
   },
   devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
@@ -80,7 +82,7 @@ module.exports = {
       __CLIENT__: true,
       __SERVER__: false,
       __DEVELOPMENT__: true,
-      __DEVTOOLS__: false
+      __DEVTOOLS__: true
     })
   ]
 };

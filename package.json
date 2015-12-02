@@ -25,6 +25,8 @@
   },
   "homepage": "",
   "dependencies": {
+    "babel-polyfill": "^6.2.0",
+    "babel-preset-stage-0": "^6.1.18",
     "elemental": "^0.5.5",
     "history": "^1.13.1",
     "less": "^2.5.3",
@@ -38,6 +40,8 @@
     "react-router": "^1.0.0",
     "redbox-react": "^1.0.5",
     "redux": "^3.0.4",
+    "redux-async": "^2.0.0",
+    "redux-create-reducer": "^1.0.0",
     "redux-router": "^1.0.0-beta4"
   },
   "devDependencies": {
