@@ -83,6 +83,7 @@ module.exports = {
       __SERVER__: false,
       __DEVELOPMENT__: true,
       __DEVTOOLS__: true
+      // 'process.env.NODE_ENV': 'production'
     })
   ]
 };
