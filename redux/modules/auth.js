@@ -69,7 +69,16 @@ export const loginUser = (email, password) => {
     types: [LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE],
     payload: {
       loginResponse: api.loginUser(defaults),
-      email
+      email,
+      saveLocal: {
+        type: 'set',
+        key: 'authInfo',
+        test: action => action.type === LOGIN_USER_SUCCESS,
+        transform: payload => JSON.stringify({
+          'id': payload.loginResponse.userId,
+          'token': payload.loginResponse.id
+        })
+      }
     }
   }
 }

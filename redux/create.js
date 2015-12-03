@@ -7,7 +7,19 @@ import { persistState } from 'redux-devtools';
 import routes from 'root/routes';
 import DevTools from './DevTools';
 
-let middleware = [ asyncMiddleware ];
+const localStoragePersist = store => next => action => {
+  if(action.payload.saveLocal){
+    let {type, key, test, transform} = action.payload.saveLocal;
+    if(test(action)){
+      let value = transform(action.payload);
+      localStorage[`${type}Item`](key, value);
+    }
+  }
+
+  return next(action);
+}
+
+let middleware = [ asyncMiddleware, localStoragePersist ];
 let finalCreateStore;
 
 if (process.env.NODE_ENV === 'production') {
