@@ -8,8 +8,8 @@ import routes from 'root/routes';
 import DevTools from './DevTools';
 
 const localStoragePersist = store => next => action => {
-  if(action.payload.saveLocal){
-    let {type, key, test, transform} = action.payload.saveLocal;
+  if(action.meta && action.meta.saveLocal){
+    let {type, key, test, transform} = action.meta.saveLocal;
     if(test(action)){
       let value = transform(action.payload);
       localStorage[`${type}Item`](key, value);

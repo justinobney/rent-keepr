@@ -27,7 +27,11 @@ let mapDispatchToProps = dispatch => ({dispatch, pushState})
 export default class Login extends Component {
   _handleLogin(e){
 		e.preventDefault();
-    this.props.dispatch(loginUser());
+		let defaults = {
+	    'email':'justinobney@gmail.com',
+	    'password':'password'
+	  };
+    this.props.dispatch(loginUser(defaults));
   }
   componentWillReceiveProps(nextProps) {
       if(nextProps.auth.isAuthenticated){

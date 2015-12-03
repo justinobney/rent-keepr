@@ -60,16 +60,14 @@ export default createReducer(initialState, {
   }
 });
 
-export const loginUser = (email, password) => {
-  let defaults = {
-    'email':'justinobney@gmail.com',
-    'password':'password'
-  };
+export const loginUser = ({email, password}) => {
   return {
     types: [LOGIN_USER_REQUEST, LOGIN_USER_SUCCESS, LOGIN_USER_FAILURE],
     payload: {
-      loginResponse: api.loginUser(defaults),
-      email,
+      loginResponse: api.loginUser({email, password}),
+      email
+    },
+    meta: {
       saveLocal: {
         type: 'set',
         key: 'authInfo',
