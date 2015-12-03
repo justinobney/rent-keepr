@@ -11,7 +11,8 @@ import {
 	FormField,
 	FormInput,
 	FormRow,
-	Glyph
+	Glyph,
+	Spinner
 } from'elemental';
 
 import ContentPage from 'components/ContentPage';
@@ -34,6 +35,10 @@ export default class Login extends Component {
       }
   }
   render() {
+		let {auth} = this.props;
+		let loading = <span>&nbsp;&nbsp;<Spinner size="md" type="inverted" /></span>;
+		let icon = <Glyph icon="lock" />;
+		let buttonIcon = auth.isAuthenticating ? loading : icon;
     return (
 			<div className="login-wrapper">
 				<ContentPage className="m-single">
@@ -52,8 +57,8 @@ export default class Login extends Component {
 								<FormField label="Password" htmlFor="basic-form-input-password">
 									<FormInput type="password" placeholder="Password" name="basic-form-input-password" />
 								</FormField>
-								<Button type="primary" submit={true}>
-									Log In <Glyph icon="lock" />
+								<Button type="primary" submit={true} disabled={auth.isAuthenticating}>
+									Log In {buttonIcon}
 								</Button>
 							</Form>
 	        </main>
