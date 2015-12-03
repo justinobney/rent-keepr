@@ -15,6 +15,7 @@ let initialState = {
 export default createReducer(initialState, {
   [GET_PROPERTIES_REQUEST](state, action) {
     let props = { isFetching: true };
+    delete state.errorMessage;
     return {...state, ...props}
   },
   [GET_PROPERTIES_SUCCESS](state, action) {
@@ -24,7 +25,7 @@ export default createReducer(initialState, {
       isFetching: false,
       items
     };
-
+    delete state.errorMessage;
     return {...state, ...props}
   },
   [GET_PROPERTIES_FAILURE](state, action) {

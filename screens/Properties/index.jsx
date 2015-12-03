@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
-import { Button, Table } from 'elemental';
+import { Alert, Button, Spinner, Table } from 'elemental';
 
 import './index.scss';
 
@@ -14,14 +14,39 @@ let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class PropertyList extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.dispatch(getProperties())
+  }
+  _renderTable(properties){
+    return (
+      <Table>
+        <colgroup>
+          <col width="" />
+          <col width="" />
+          <col width="100" />
+          <col width="100" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Address</th>
+            <th>Tenany</th>
+            <th>Rent</th>
+            <th>Current</th>
+          </tr>
+        </thead>
+        <tbody>
+          {properties.items.map(this._renderRow)}
+        </tbody>
+      </Table>
+    );
   }
   _renderRow(item){
     return (
       <tr key={item.id}>
   			<td>
-  				<a href="javascript:;">{`${item.address1}, ${item.city}, ${item.state} ${item.zipcode}`}</a>
+          <Button type="link" href={`#/properties/${item.id}`}>
+            {`${item.address1}, ${item.city}, ${item.state} ${item.zipcode}`}
+          </Button>
   			</td>
   			<td>{item.tenant}</td>
         <td>{item.rent}</td>
@@ -30,7 +55,17 @@ export default class PropertyList extends Component {
     );
   }
   render() {
-    let properties = this.props.properties;
+    let {properties} = this.props;
+    let content = null;
+
+    if(properties.isFetching){
+      content = <Spinner size="md" type="primary" />;
+    } else if (properties.errorMessage){
+      content = <Alert type="danger"><strong>Error:</strong> {properties.errorMessage}</Alert>
+    } else {
+      content = this._renderTable(properties);
+    }
+
     return (
       <div className="property-list-wrapper">
         <ContentPage>
@@ -42,25 +77,7 @@ export default class PropertyList extends Component {
             </Button>
           </header>
           <main>
-            <Table>
-            	<colgroup>
-                <col width="" />
-                <col width="" />
-                <col width="100" />
-            		<col width="100" />
-            	</colgroup>
-            	<thead>
-            		<tr>
-                  <th>Address</th>
-            			<th>Tenany</th>
-            			<th>Rent</th>
-            			<th>Current</th>
-            		</tr>
-            	</thead>
-            	<tbody>
-                {properties.items.map(::this._renderRow)}
-            	</tbody>
-            </Table>
+            {content}
           </main>
         </ContentPage>
       </div>
