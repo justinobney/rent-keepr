@@ -5,6 +5,10 @@
   @include columns(1, $margin:10px, $container-width:100%);
 }
 
+.Table .property-list-rent {
+  text-align: right;
+}
+
 .new-property-wrapper {
   width: 100%;
   @include columns(1, $margin:10px, $container-width:100%);

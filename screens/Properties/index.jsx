@@ -29,7 +29,7 @@ export default class PropertyList extends Component {
         <thead>
           <tr>
             <th>Address</th>
-            <th>Tenany</th>
+            <th>Tenant</th>
             <th>Rent</th>
             <th>Current</th>
           </tr>

@@ -2,9 +2,10 @@ import { createReducer } from 'redux-create-reducer';
 import api from 'root/api.js';
 
 // actions
-const GET_PROPERTIES_REQUEST = 'rent-keepr/properties/GET_PROPERTIES_REQUEST';
-const GET_PROPERTIES_SUCCESS = 'rent-keepr/properties/GET_PROPERTIES_SUCCESS';
-const GET_PROPERTIES_FAILURE = 'rent-keepr/properties/GET_PROPERTIES_FAILURE';
+const actionBase = 'rent-keepr/properties';
+const GET_PROPERTIES_REQUEST = `${actionBase}/GET_PROPERTIES_REQUEST`;
+const GET_PROPERTIES_SUCCESS = `${actionBase}/GET_PROPERTIES_SUCCESS`;
+const GET_PROPERTIES_FAILURE = `${actionBase}/GET_PROPERTIES_FAILURE`;
 
 let initialState = {
   isFetching: false,
@@ -14,23 +15,23 @@ let initialState = {
 // reducer
 export default createReducer(initialState, {
   [GET_PROPERTIES_REQUEST](state, action) {
-    let props = { isFetching: true };
+    let changes = { isFetching: true };
     delete state.errorMessage;
-    return {...state, ...props}
+    return {...state, ...changes}
   },
   [GET_PROPERTIES_SUCCESS](state, action) {
     const { items } = action.payload;
 
-    let props = {
+    let changes = {
       isFetching: false,
       items
     };
     delete state.errorMessage;
-    return {...state, ...props}
+    return {...state, ...changes}
   },
   [GET_PROPERTIES_FAILURE](state, action) {
     return { errorMessage: action.payload.message };
-  },
+  }
 });
 
 // action creators
