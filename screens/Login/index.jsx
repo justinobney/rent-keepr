@@ -2,9 +2,10 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
-import { onLoginUserSuccess } from '@redux/modules/auth';
+import { loginUser } from '@redux/modules/auth';
 import './index.scss';
 import {
+	Alert,
 	Button,
 	Form,
 	FormField,
@@ -25,7 +26,7 @@ let mapDispatchToProps = dispatch => ({dispatch, pushState})
 export default class Login extends Component {
   _handleLogin(e){
 		e.preventDefault();
-    this.props.dispatch(onLoginUserSuccess());
+    this.props.dispatch(loginUser());
   }
   componentWillReceiveProps(nextProps) {
       if(nextProps.auth.isAuthenticated){
@@ -40,6 +41,10 @@ export default class Login extends Component {
 	          <h1>Login</h1>
 	        </header>
 	        <main>
+						{
+							this.props.auth.statusText &&
+							<Alert type="danger"><strong>Error:</strong> {this.props.auth.statusText}</Alert>
+						}
 	          <Form className="login-form" onSubmit={::this._handleLogin}>
 								<FormField label="Email address" htmlFor="basic-form-input-email">
 									<FormInput autofocus type="email" placeholder="Enter email" name="basic-form-input-email" />
