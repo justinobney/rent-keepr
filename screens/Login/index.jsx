@@ -1,8 +1,9 @@
 // Login Screen
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import { pushState } from 'redux-router';
-import { loginUser } from '@redux/modules/auth';
+import {pushState} from 'redux-router';
+import {loginUser} from '@redux/modules/auth';
+import {reduxForm} from 'redux-form';
+
 import './index.scss';
 import {
 	Alert,
@@ -17,21 +18,23 @@ import {
 
 import ContentPage from 'components/ContentPage';
 
+let formConfig = {form: 'login', fields: ['email', 'password']};
 let mapStateToProps = state => ({
   location: state.router.location,
   auth: state.auth
 });
 let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
-@connect(mapStateToProps, mapDispatchToProps)
+@reduxForm(formConfig, mapStateToProps, mapDispatchToProps)
 export default class Login extends Component {
   _handleLogin(e){
 		e.preventDefault();
-		let defaults = {
-	    'email':'justinobney@gmail.com',
-	    'password':'password'
+		let {email, password} = this.props.fields;
+		let credentials = {
+	    'email':email.value,
+	    'password':password.value
 	  };
-    this.props.dispatch(loginUser(defaults));
+    this.props.dispatch(loginUser(credentials));
   }
   componentWillReceiveProps(nextProps) {
       if(nextProps.auth.isAuthenticated){
@@ -39,7 +42,7 @@ export default class Login extends Component {
       }
   }
   render() {
-		let {auth} = this.props;
+		let {auth, fields: {email, password}} = this.props;
 		let loading = <span>&nbsp;&nbsp;<Spinner size="md" type="inverted" /></span>;
 		let icon = <Glyph icon="lock" />;
 		let buttonIcon = auth.isAuthenticating ? loading : icon;
@@ -56,10 +59,16 @@ export default class Login extends Component {
 						}
 	          <Form className="login-form" onSubmit={::this._handleLogin}>
 								<FormField label="Email address" htmlFor="basic-form-input-email">
-									<FormInput autofocus type="email" placeholder="Enter email" name="basic-form-input-email" />
+									<FormInput autofocus type="email"
+										placeholder="Enter email"
+										name="basic-form-input-email"
+										{...email} />
 								</FormField>
 								<FormField label="Password" htmlFor="basic-form-input-password">
-									<FormInput type="password" placeholder="Password" name="basic-form-input-password" />
+									<FormInput type="password"
+										placeholder="Password"
+										name="basic-form-input-password"
+										{...password} />
 								</FormField>
 								<Button type="primary" submit={true} disabled={auth.isAuthenticating}>
 									Log In {buttonIcon}
