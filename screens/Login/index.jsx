@@ -1,8 +1,8 @@
 // Login Screen
 import React, {Component} from 'react';
 import {pushState} from 'redux-router';
-import {loginUser} from '@redux/modules/auth';
 import {reduxForm} from 'redux-form';
+import {loginUser} from '@redux/modules/auth';
 
 import './index.scss';
 import {
