@@ -5,6 +5,18 @@ let jsonHeaders = {
   'Content-Type': 'application/json'
 };
 
+let post = (url, data, opts) => {
+  let default_opts = {
+    method: 'post',
+    headers: {...jsonHeaders},
+    body: JSON.stringify(data)
+  };
+
+  opts = {...default_opts, ...opts};
+
+  return asyncFetch(`${base}${url}`, opts)
+}
+
 function checkStatus(response) {
   if (response.status < 200 || response.status >= 300) {
     var error = new Error(response.statusText)
@@ -21,13 +33,11 @@ async function asyncFetch(url, opts = {}) {
 
 export default {
   getProperties: async () => asyncFetch(`${base}/api/properties`),
+  createProperty: async ({address1, address2, city, state, zipcode}) => {
+    return post('/api/properties', {address1, address2, city, state, zipcode});
+  },
   loginUser: async ({email, password}) => {
-    let opts = {
-      method: 'post',
-      headers: {...jsonHeaders},
-      body: JSON.stringify({email, password})
-    };
-    return asyncFetch(`${base}/api/Users/login`, opts)
+    return post('/api/Users/login', {email, password});
   },
   verifyToken: async (userId, token) => asyncFetch(`${base}/api/Users/${userId}?access_token=${token}`),
 }
