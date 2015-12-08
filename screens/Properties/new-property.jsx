@@ -10,14 +10,18 @@ import {
   FormRow,
   FormInput,
   FormField,
-  FormNote
+  FormNote,
+  Spinner
 } from 'elemental';
 
 import './index.scss';
 
 import ContentPage from 'components/ContentPage';
 
-let formConfig = {'form': 'new-property', fields: ['address1', 'address2', 'city', 'state', 'zipcode']};
+let formConfig = {
+    form: 'new-property',
+    fields: ['address1', 'address2', 'city', 'state', 'zipcode']
+};
 let mapStateToProps = state => ({properties: state.properties});
 let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
@@ -34,7 +38,11 @@ export default class NewProperty extends Component {
     }
   }
   render() {
-    let {properties, handleSubmit, fields: {address1, address2, city, state, zipcode}} = this.props;
+    let {
+      properties,
+      handleSubmit,
+      fields: {address1, address2, city, state, zipcode}
+    } = this.props;
     return (
       <div className="new-property-wrapper">
         <ContentPage className="m-single">
@@ -80,8 +88,12 @@ export default class NewProperty extends Component {
                     }
               	</FormField>
               </FormRow>
-              <Button type="primary" submit={true}>
+              <Button type="primary" submit={true} disabled={properties.isSaving}>
                 Save Property
+                {
+                  properties.isSaving &&
+                  <span>&nbsp;&nbsp;<Spinner size="md" type="inverted" /></span>
+                }
               </Button>
               <Button type="link-cancel" href="#/properties">
                 Cancel
