@@ -12,12 +12,18 @@ const CREATE_PROPERTY_REQUEST = `${actionBase}/CREATE_PROPERTY_REQUEST`;
 const CREATE_PROPERTY_SUCCESS = `${actionBase}/CREATE_PROPERTY_SUCCESS`;
 const CREATE_PROPERTY_FAILURE = `${actionBase}/CREATE_PROPERTY_FAILURE`;
 
+const UPDATE_PROPERTY_REQUEST = `${actionBase}/UPDATE_PROPERTY_REQUEST`;
+const UPDATE_PROPERTY_SUCCESS = `${actionBase}/UPDATE_PROPERTY_SUCCESS`;
+const UPDATE_PROPERTY_FAILURE = `${actionBase}/UPDATE_PROPERTY_FAILURE`;
+
 const RESET_PROPERTY = `${actionBase}/RESET_PROPERTY`;
+const SET_PROPERTY = `${actionBase}/RESET_PROPERTY`;
 
 let initialState = {
   isFetching: false,
   isSaving: false,
-  items: []
+  items: [],
+  data: {}
 };
 
 // reducer
@@ -51,10 +57,8 @@ export default createReducer(initialState, {
   },
 
   [CREATE_PROPERTY_SUCCESS](state, action) {
-    const { property } = action.payload;
     let changes = {
       isSaving: false,
-      items: [...state.items, property],
       saveSuccess: true,
       error: null
     };
@@ -71,10 +75,49 @@ export default createReducer(initialState, {
     return {...state, ...changes}
   },
 
+  [UPDATE_PROPERTY_REQUEST](state, action) {
+    let changes = {
+      isSaving: true
+    };
+    return {...state, ...changes}
+  },
+
+  [UPDATE_PROPERTY_SUCCESS](state, action) {
+    const { property } = action.payload;
+    let changes = {
+      isSaving: false,
+      saveSuccess: true,
+      error: null
+    };
+    return {...state, ...changes}
+  },
+
+  [UPDATE_PROPERTY_FAILURE](state, action) {
+    let {error} = action.payload;
+    let changes = {
+      isSaving: false,
+      saveSuccess: false,
+      error
+    };
+    return {...state, ...changes}
+  },
+
   [RESET_PROPERTY](state, action){
     let changes = {
       isSaving: false,
-      saveSuccess: false
+      saveSuccess: false,
+      error: null,
+      data: {}
+    };
+    return {...state, ...changes}
+  },
+
+  [SET_PROPERTY](state, action){
+    let changes = {
+      isSaving: false,
+      saveSuccess: false,
+      data: action.payload,
+      error: null
     };
     return {...state, ...changes}
   }
@@ -99,8 +142,24 @@ export const createProperty = (property) => {
   }
 }
 
+export const updateProperty = (property) => {
+  return {
+    types: [UPDATE_PROPERTY_REQUEST, UPDATE_PROPERTY_SUCCESS, UPDATE_PROPERTY_FAILURE],
+    payload: {
+      property: api.updateProperty(property)
+    }
+  }
+}
+
 export const resetProperty = () => {
   return {
     type: RESET_PROPERTY
+  }
+}
+
+export const setProperty = (data) => {
+  return {
+    type: SET_PROPERTY,
+    payload: data
   }
 }
