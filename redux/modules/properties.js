@@ -27,6 +27,7 @@ export default createReducer(initialState, {
     delete state.errorMessage;
     return {...state, ...changes}
   },
+
   [GET_PROPERTIES_SUCCESS](state, action) {
     const { items } = action.payload;
 
@@ -37,15 +38,18 @@ export default createReducer(initialState, {
     delete state.errorMessage;
     return {...state, ...changes}
   },
+
   [GET_PROPERTIES_FAILURE](state, action) {
     return { errorMessage: action.payload.message };
   },
+
   [CREATE_PROPERTY_REQUEST](state, action) {
     let changes = {
       isSaving: true
     };
     return {...state, ...changes}
   },
+
   [CREATE_PROPERTY_SUCCESS](state, action) {
     const { property } = action.payload;
     let changes = {
@@ -56,6 +60,7 @@ export default createReducer(initialState, {
     };
     return {...state, ...changes}
   },
+
   [CREATE_PROPERTY_FAILURE](state, action) {
     let {error} = action.payload;
     let changes = {
@@ -65,6 +70,7 @@ export default createReducer(initialState, {
     };
     return {...state, ...changes}
   },
+
   [RESET_PROPERTY](state, action){
     let changes = {
       isSaving: false,
