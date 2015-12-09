@@ -10,6 +10,7 @@ import Home from './screens/Home/';
 import Login from './screens/Login/';
 import PropertyList from './screens/Properties/';
 import NewProperty from './screens/Properties/new-property.jsx';
+import EditProperty from './screens/Properties/edit-property.jsx';
 
 let routes = (
   <Route path="/" component={App}>
@@ -18,6 +19,7 @@ let routes = (
       <Route path="properties">
         <IndexRoute component={PropertyList}/>
         <Route path="new" component={NewProperty} />
+        <Route path=":propertyId" component={EditProperty} />
       </Route>
     </Route>
     <Route path="login" component={Login} />

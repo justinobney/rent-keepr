@@ -12,14 +12,16 @@ import {
 } from 'elemental';
 
 let formConfig = {
-    form: 'new-property',
-    fields: ['address1', 'address2', 'city', 'state', 'zipcode']
+    form: 'edit-property',
+    fields: ['id', 'address1', 'address2', 'city', 'state', 'zipcode']
 };
 
-@reduxForm(formConfig)
+@reduxForm(formConfig,state => ({ // mapStateToProps
+  initialValues: state.properties.data // will pull state into form's initialValues
+}))
 export default class PropertyForm extends Component {
   static propTypes = {
-    error: React.PropTypes.object,
+    apiError: React.PropTypes.object,
     fields: React.PropTypes.object,
     isSaving: React.PropTypes.any,
     handleSubmit: React.PropTypes.func,
@@ -28,27 +30,27 @@ export default class PropertyForm extends Component {
     let {
       handleSubmit,
       isSaving,
-      error,
+      apiError,
       fields: {address1, address2, city, state, zipcode}
     } = this.props;
-
+    console.log('apiError', apiError, isSaving);
     return (
       <Form className="new-property-form" onSubmit={handleSubmit}>
         <FormField label="Address" htmlFor="address-street1">
           <FormInput placeholder="Address Line 1" name="address-street1" {...address1} />
             {
-              error && error.details.messages.address1 &&
+              apiError && apiError.details.messages.address1 &&
               <FormNote type="danger">
-                  {error && error.details.messages.address1}
+                  {apiError && apiError.details.messages.address1}
               </FormNote>
             }
         </FormField>
         <FormField>
           <FormInput placeholder="Address Line 2" name="address-street2" {...address2} />
             {
-              error && error.details.messages.address2 &&
+              apiError && apiError.details.messages.address2 &&
               <FormNote type="danger">
-                  {error && error.details.messages.address2}
+                  {apiError && apiError.details.messages.address2}
               </FormNote>
             }
         </FormField>
@@ -56,27 +58,27 @@ export default class PropertyForm extends Component {
           <FormField width="two-thirds">
             <FormInput placeholder="City" name="city" {...city} />
               {
-                error && error.details.messages.city &&
+                apiError && apiError.details.messages.city &&
                 <FormNote type="danger">
-                    {error && error.details.messages.city}
+                    {apiError && apiError.details.messages.city}
                 </FormNote>
               }
           </FormField>
           <FormField width="one-third">
             <FormInput placeholder="State" name="state" {...state} />
               {
-                error && error.details.messages.state &&
+                apiError && apiError.details.messages.state &&
                 <FormNote type="danger">
-                    {error && error.details.messages.state}
+                    {apiError && apiError.details.messages.state}
                 </FormNote>
               }
           </FormField>
           <FormField width="one-third">
             <FormInput width="one-third" placeholder="Post Code" name="zipcode" {...zipcode} />
               {
-                error && error.details.messages.zipcode &&
+                apiError && apiError.details.messages.zipcode &&
                 <FormNote type="danger">
-                    {error && error.details.messages.zipcode}
+                    {apiError && apiError.details.messages.zipcode}
                 </FormNote>
               }
           </FormField>

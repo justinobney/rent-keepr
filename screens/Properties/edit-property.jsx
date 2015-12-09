@@ -1,24 +1,29 @@
-// New Property Screen
+// Edit Property Screen
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {pushState} from 'redux-router';
-import {resetProperty, createProperty} from '@redux/modules/properties'
+import {setProperty, updateProperty} from '@redux/modules/properties'
 
 import './index.scss';
 
 import ContentPage from 'components/ContentPage';
 import PropertyForm from 'components/Properties/property-form';
 
-let mapStateToProps = state => ({properties: state.properties});
+let mapStateToProps = state => ({
+  properties: state.properties,
+  router: state.router
+});
 let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class NewProperty extends Component {
+export default class EditProperty extends Component {
   _handleSubmit(data){
-    this.props.dispatch(createProperty(data));
+    this.props.dispatch(updateProperty(data));
   }
   componentWillMount(){
-    this.props.dispatch(resetProperty());
+    let {properties, router} = this.props;
+    let property = properties.items.find(item => item.id == router.params.propertyId);
+    this.props.dispatch(setProperty(property));
   }
   componentWillReceiveProps(nextProps) {
     let {properties: {error, saveSuccess}} = nextProps;
@@ -27,12 +32,13 @@ export default class NewProperty extends Component {
     }
   }
   render() {
-    let {properties} = this.props;
+    let {properties, router} = this.props;
+    console.log('properties.error', properties.error);
     return (
       <div className="new-property-wrapper">
         <ContentPage className="m-single">
           <header className="content-page-header">
-            <h1>New Property</h1>
+            <h1>Edit Property</h1>
           </header>
           <main>
             <PropertyForm onSubmit={::this._handleSubmit}
