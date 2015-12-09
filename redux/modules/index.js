@@ -8,5 +8,6 @@ export default combineReducers({
   router: routerStateReducer,
   form: formReducer,
   properties,
-  auth
+  auth,
+  auth2:auth
 });

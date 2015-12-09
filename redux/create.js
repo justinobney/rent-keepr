@@ -1,5 +1,5 @@
 import { applyMiddleware, compose, createStore } from 'redux';
-import reducer from './modules/reducer.js';
+import reducer from './modules';
 import createHistory from 'history/lib/createHashHistory'
 import { reduxReactRouter } from 'redux-router';
 import asyncMiddleware from 'redux-async';
@@ -39,8 +39,8 @@ let store = finalCreateStore(reducer)
 
 if (module.hot) {
   // Enable Webpack hot module replacement for reducers
-  module.hot.accept('./modules/reducer', () => {
-    const nextRootReducer = require('./modules/reducer');
+  module.hot.accept('./modules', () => {
+    const nextRootReducer = require('./modules/index.js');
     store.replaceReducer(nextRootReducer);
   });
 }

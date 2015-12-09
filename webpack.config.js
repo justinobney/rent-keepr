@@ -17,22 +17,6 @@ module.exports = {
       'webpack/hot/only-dev-server',
       'babel-polyfill',
       path.resolve(__dirname, './index.jsx')
-    ],
-    vendor: [
-      'elemental',
-      'history',
-      'lodash',
-      'moment',
-      'react',
-      'react-addons-css-transition-group',
-      'react-dom',
-      'react-redux',
-      'react-router',
-      'redbox-react',
-      'redux',
-      'redux-router',
-      'redux-async',
-      'redux-create-reducer'
     ]
   },
   devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
@@ -75,7 +59,6 @@ module.exports = {
       inline: true
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({//"compiler flags"
