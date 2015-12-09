@@ -27,7 +27,7 @@ export default class NewProperty extends Component {
     }
   }
   render() {
-    let {properties} = this.props;
+    let {properties: {error, isSaving}} = this.props;
     return (
       <div className="new-property-wrapper">
         <ContentPage className="m-single">
@@ -36,8 +36,8 @@ export default class NewProperty extends Component {
           </header>
           <main>
             <PropertyForm onSubmit={::this._handleSubmit}
-              isSaving={properties.isSaving}
-              apiError={properties.error} />
+              isSaving={isSaving}
+              apiError={error} />
           </main>
         </ContentPage>
       </div>

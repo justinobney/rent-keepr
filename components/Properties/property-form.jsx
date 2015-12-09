@@ -33,7 +33,7 @@ export default class PropertyForm extends Component {
       apiError,
       fields: {address1, address2, city, state, zipcode}
     } = this.props;
-    console.log('apiError', apiError, isSaving);
+
     return (
       <Form className="new-property-form" onSubmit={handleSubmit}>
         <FormField label="Address" htmlFor="address-street1">

@@ -32,8 +32,7 @@ export default class EditProperty extends Component {
     }
   }
   render() {
-    let {properties, router} = this.props;
-    console.log('properties.error', properties.error);
+    let {properties: {error, isSaving}, router} = this.props;
     return (
       <div className="new-property-wrapper">
         <ContentPage className="m-single">
@@ -42,8 +41,8 @@ export default class EditProperty extends Component {
           </header>
           <main>
             <PropertyForm onSubmit={::this._handleSubmit}
-              isSaving={properties.isSaving}
-              apiError={properties.error} />
+              isSaving={isSaving}
+              apiError={error} />
           </main>
         </ContentPage>
       </div>
