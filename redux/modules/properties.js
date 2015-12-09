@@ -12,6 +12,8 @@ const CREATE_PROPERTY_REQUEST = `${actionBase}/CREATE_PROPERTY_REQUEST`;
 const CREATE_PROPERTY_SUCCESS = `${actionBase}/CREATE_PROPERTY_SUCCESS`;
 const CREATE_PROPERTY_FAILURE = `${actionBase}/CREATE_PROPERTY_FAILURE`;
 
+const RESET_PROPERTY = `${actionBase}/RESET_PROPERTY`;
+
 let initialState = {
   isFetching: false,
   isSaving: false,
@@ -49,6 +51,7 @@ export default createReducer(initialState, {
     let changes = {
       isSaving: false,
       items: [...state.items, property],
+      saveSuccess: true,
       error: null
     };
     return {...state, ...changes}
@@ -57,7 +60,15 @@ export default createReducer(initialState, {
     let {error} = action.payload;
     let changes = {
       isSaving: false,
+      saveSuccess: false,
       error
+    };
+    return {...state, ...changes}
+  },
+  [RESET_PROPERTY](state, action){
+    let changes = {
+      isSaving: false,
+      saveSuccess: false
     };
     return {...state, ...changes}
   }
@@ -79,5 +90,11 @@ export const createProperty = (property) => {
     payload: {
       property: api.createProperty(property)
     }
+  }
+}
+
+export const resetProperty = () => {
+  return {
+    type: RESET_PROPERTY
   }
 }
