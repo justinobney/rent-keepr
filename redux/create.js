@@ -41,7 +41,7 @@ if (module.hot) {
   // Enable Webpack hot module replacement for reducers
   module.hot.accept('./modules', () => {
     const nextRootReducer = require('./modules/index.js');
-    store.replaceReducer(nextRootReducer);
+    store.replaceReducer(nextRootReducer.default);
   });
 }
 
