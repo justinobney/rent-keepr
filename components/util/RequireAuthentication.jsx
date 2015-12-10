@@ -10,7 +10,6 @@ const mapStateToProps = (state) => ({
 });
 
 export function requireAuthentication(Component) {
-  @connect(mapStateToProps)
   class AuthenticatedComponent extends React.Component {
     componentWillMount () {
       this.checkAuth();
@@ -35,5 +34,5 @@ export function requireAuthentication(Component) {
     }
   }
 
-  return AuthenticatedComponent;
+  return connect(mapStateToProps)(AuthenticatedComponent);
 }

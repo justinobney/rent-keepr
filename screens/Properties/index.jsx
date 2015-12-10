@@ -12,8 +12,7 @@ import {getProperties} from '@redux/modules/properties'
 let mapStateToProps = state => ({properties: state.properties});
 let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class PropertyList extends Component {
+class PropertyList extends Component {
   componentDidMount() {
     this.props.dispatch(getProperties())
   }
@@ -84,3 +83,5 @@ export default class PropertyList extends Component {
     );
   }
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyList);

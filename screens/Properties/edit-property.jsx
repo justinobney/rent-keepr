@@ -15,8 +15,7 @@ let mapStateToProps = state => ({
 });
 let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class EditProperty extends Component {
+class EditProperty extends Component {
   _handleSubmit(data){
     this.props.dispatch(updateProperty(data));
   }
@@ -49,3 +48,5 @@ export default class EditProperty extends Component {
     );
   }
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditProperty);

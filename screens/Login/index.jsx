@@ -25,8 +25,7 @@ let mapStateToProps = state => ({
 });
 let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
-@reduxForm(formConfig, mapStateToProps, mapDispatchToProps)
-export default class Login extends Component {
+class Login extends Component {
   _handleLogin(e){
 		e.preventDefault();
 		let {email, password} = this.props.fields;
@@ -80,3 +79,5 @@ export default class Login extends Component {
     );
   }
 };
+
+export default reduxForm(formConfig, mapStateToProps, mapDispatchToProps)(Login);

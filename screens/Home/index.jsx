@@ -10,8 +10,7 @@ import ContentPage from 'components/ContentPage';
 let mapStateToProps = state => ({});
 let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class Home extends Component {
+class Home extends Component {
   render() {
     return (
       <div className="home-wrapper">
@@ -27,3 +26,5 @@ export default class Home extends Component {
     );
   }
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

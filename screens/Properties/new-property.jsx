@@ -12,8 +12,8 @@ import PropertyForm from 'components/Properties/property-form';
 let mapStateToProps = state => ({properties: state.properties});
 let mapDispatchToProps = dispatch => ({dispatch, pushState})
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class NewProperty extends Component {
+
+class NewProperty extends Component {
   _handleSubmit(data){
     this.props.dispatch(createProperty(data));
   }
@@ -44,3 +44,5 @@ export default class NewProperty extends Component {
     );
   }
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewProperty)

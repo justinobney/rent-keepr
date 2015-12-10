@@ -16,10 +16,7 @@ let formConfig = {
     fields: ['id', 'address1', 'address2', 'city', 'state', 'zipcode']
 };
 
-@reduxForm(formConfig,state => ({ // mapStateToProps
-  initialValues: state.properties.data // will pull state into form's initialValues
-}))
-export default class PropertyForm extends Component {
+class PropertyForm extends Component {
   static propTypes = {
     apiError: React.PropTypes.object,
     fields: React.PropTypes.object,
@@ -97,3 +94,7 @@ export default class PropertyForm extends Component {
     );
   }
 };
+
+export default reduxForm(formConfig,state => ({ // mapStateToProps
+  initialValues: state.properties.data // will pull state into form's initialValues
+}))(PropertyForm);
