@@ -39,7 +39,7 @@ export default createReducer(initialState, {
 
     let changes = {
       isFetching: false,
-      items
+      items: items.map((item, idx) => ({...item, tenant:'bob', rent:500.00, current:idx%3!==1}))
     };
     delete state.errorMessage;
     return {...state, ...changes}

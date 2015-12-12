@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { pushState } from 'redux-router';
-import { Alert, Button, Spinner, Table } from 'elemental';
+import { Alert, Button, Glyph, Spinner, Table } from 'elemental';
 
 import './index.scss';
 
@@ -39,17 +39,21 @@ class PropertyList extends Component {
       </Table>
     );
   }
-  _renderRow(item){
+  _renderRow(item, idx){
+    let icon = item.current ? 'thumbsup' : 'thumbsdown';
+    let type = item.current ? 'default' : 'danger';
     return (
-      <tr key={item.id}>
+      <tr key={`${item.id}_${idx}`}>
   			<td>
           <Button type="link" href={`#/properties/${item.id}`}>
             {`${item.address1}, ${item.city}, ${item.state} ${item.zipcode}`}
           </Button>
   			</td>
   			<td>{item.tenant}</td>
-        <td>{item.rent}</td>
-      <td>{item.current}</td>
+        <td>{`$${item.rent.toFixed(2)}`}</td>
+        <td>
+          <Glyph icon={icon} type={type} />
+        </td>
   		</tr>
     );
   }
